@@ -8,6 +8,6 @@ import {Router} from '@angular/router';
   styleUrl: './base.component.css'
 })
 export class BaseComponent {
-  constructor(protected router:Router){
+  constructor(public router: Router){
   }
 }

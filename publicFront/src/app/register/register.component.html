@@ -1,1 +1,27 @@
-<p>register works!</p>
+
+<div class="layer"></div>
+<main class="page-center">
+  <article class="sign-up">
+    <h1 class="sign-up__title">Commencer</h1>
+    <p class="sign-up__subtitle">Par créer le meilleur compte utilisateur possible</p>
+    <form class="sign-up-form form" (ngSubmit)="onSubmit()">
+      <label class="form-label-wrapper">
+        <p class="form-label">Nom</p>
+        <input class="form-input" type="text" placeholder="Entrer votre nom" required>
+      </label>
+      <label class="form-label-wrapper">
+        <p class="form-label">Email</p>
+        <input class="form-input" type="email" id="email" [(ngModel)]="email" name="email" placeholder="Entrer votre email" required>
+      </label>
+      <label class="form-label-wrapper">
+        <p class="form-label">Mot de passe</p>
+        <input id="password" [(ngModel)]="password" name="password" class="form-input" type="password" placeholder="Entrer votre mot de passe" required>
+      </label>
+      <label class="form-label-wrapper">
+        <p class="form-label">Confirmer mot de passe</p>
+        <input id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" class="form-input" type="password" placeholder="Entrer votre mot de passe" required>
+      </label>
+      <button type="submit" class="form-btn primary-default-btn transparent-btn">Sign up</button>
+    </form>
+  </article>
+</main>

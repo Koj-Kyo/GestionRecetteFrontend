@@ -1,1 +1,22 @@
-<p>login works!</p>
+<main class="page-center">
+  <article class="sign-up">
+    <h1 class="sign-up__title">Content de te revoir</h1>
+    <p class="sign-up__subtitle">Connecte toi à ton compte pour continuer</p>
+    <form class="sign-up-form form" (ngSubmit)="onSubmit()">
+      <label class="form-label-wrapper">
+        <p class="form-label">Email</p>
+        <input class="form-input" type="email" id="username" [(ngModel)]="username" name="username" placeholder="Enter your email" required>
+      </label>
+      <label class="form-label-wrapper">
+        <p class="form-label">Mot de passe</p>
+        <input class="form-input" type="password" id="password" [(ngModel)]="password" name="password" placeholder="Enter your password" required>
+      </label>
+      <a class="link-info forget-link" href="##">Mot de  passe oublié?</a>
+      <label class="form-checkbox-wrapper">
+        <input class="form-checkbox" type="checkbox" required>
+        <span class="form-checkbox-label">Se souvenir de moi</span>
+      </label>
+      <button type="submit" class="form-btn primary-default-btn transparent-btn">Se connecter</button>
+    </form>
+  </article>
+</main>
