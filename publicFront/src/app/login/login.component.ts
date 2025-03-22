@@ -1,25 +1,37 @@
 import { Component } from '@angular/core';
-import {Router} from '@angular/router';
+  import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+  import { AuthService } from '../services/auth.service';
+  import { tap } from 'rxjs/operators';
 
-@Component({
-  selector: 'app-login',
-  standalone: false,
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
-})
-export class LoginComponent {
-  username: string = '';
-  password: string = '';
+  @Component({
+    selector: 'app-login',
+    standalone: false,
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
+  })
+  export class LoginComponent {
+    loginFormGroup: FormGroup;
+    errorMessage: string = '';
 
-  constructor(private router: Router) {}
+    constructor(private fb: FormBuilder, private authService: AuthService) {
+      this.loginFormGroup = this.fb.group({
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]]
+      });
+    }
 
-  onSubmit() {
-    // Implement your login logic here
-    if (this.username === 'admin' && this.password === 'admin') {
-      this.router.navigate(['/home']);
-    } else {
-      alert('Invalid credentials');
+    onSubmit() {
+      if (this.loginFormGroup.valid) {
+        const { email, password } = this.loginFormGroup.value;
+        this.authService.login(email, password)
+          .pipe(
+            tap({
+              error: (error) => {
+                this.errorMessage = error.message;
+              }
+            })
+          )
+          .subscribe();
+      }
     }
   }
-
-}
